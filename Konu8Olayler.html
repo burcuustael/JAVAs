@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js de Olaylar</title>
+</head>
+<body>
+
+<h1>Js de Olaylar (Events)</h1>
+
+<p>  
+    olay demek tarayıcıda  gerçekleşecek her türlü eylem demektir.
+    mesela butona tıklama ,  select listeden eleman seçme , 
+    bir divin üzerine mouse ile gelme veya çekilme vb.
+
+</p>
+<br> <br>
+<h2> Onclick Olayı</h2>
+<p>
+
+    on click ekrandaki her hangi bir nesneye tıklama sonucu gerçekleşir.
+
+</p>
+
+
+<script>    
+function SayfaRenginiDegistir(bgRenk , fgRenk) 
+
+{
+
+    document.bgColor=bgRenk;
+    document.fgColor=fgRenk;
+
+    
+}
+
+
+
+</script>
+
+
+<div>
+    <button type ="button" name="renk1" onclick= "SayfaRenginiDegistir('red', 'White') "> Kırmızı Beyaz </button>
+
+    <input type="button" value="Sarı MAvi" onclick= "SayfaRenginiDegistir('DarkBlue', 'yellow')">
+    <input type="button" value="Siyah Beyaz" onclick= "SayfaRenginiDegistir('Black', 'White')">
+    <input type="button" value="Orjinale Dön" onclick= "SayfaRenginiDegistir('white', 'Black')">
+
+
+
+
+</div>
+<br> <br> <hr>
+<h3> Onclick Örnek - 2 - Cinsiyet Seçme </h3>
+
+<form name ="Cinsiyet">
+
+    <input type="radio" name="cins" value="Kadin"> Kadın
+    <input type="radio" name="cins" value="Erkek"> Erkek
+    <input type="button"  value="Seç" onclick="goster()"> 
+
+
+    
+</form>
+
+
+
+
+<script>
+    
+function goster() {
+
+    var secilenCinsiyet="";
+
+    if(document.Cinsiyet.cins[0].checked) {
+secilenCinsiyet="Kadin"
+
+    }
+
+    if(document.Cinsiyet.cins[1].checked) {
+secilenCinsiyet="Erkek"
+}
+
+alert("seçtiğiniz Cinsiyet : " + secilenCinsiyet)
+    
+}
+
+</script>
+
+<hr>
+
+
+<h3> Örnek - 3 - Onclick Confirm Olayı</h3>
+
+<p> Onclick olayında kullanıcıya onay - iptal verme ekranı açmak için kullanılır.</p>
+
+
+<script>
+
+function kontrol() {
+
+mesaj = " Farklı bir sayfaya geçilecek onaylıyor musnuz";
+
+if(confirm(mesaj)) { // confirm metodu kullanıcıya tamam ve iptal seçeneği sunar.
+
+location.href = "https://www.google.com/?client=safari&channel=mac_bm.tr" ; // locatin
+
+}
+
+
+}
+
+
+
+
+
+function UrunSilmeOnay(id) {
+
+
+
+if(confirm(id + "numaralı ürün silinecektir")) 
+
+
+{ // burada ilgili silme komutu çalışır.
+
+    alert (id + "Idli ürün silinmiştir.")
+
+
+}
+
+
+}
+
+
+
+
+
+</script>
+
+<input type="button" value="Google ı aç " onclick="kontrol()">
+
+<input type="button" value="Ürün Sil " onclick=" UrunSilmeOnay(18)">
+
+<hr>
+<br><br>
+
+<h3> Örnek -4 -  OnMouseOver olayı </h3>
+
+<p>
+    
+Ekrandaki herhangi bir elemntin üzerine geldiğimizde gerçelşene olaydır
+</p>
+
+<a href="#" onmouseover="alert('onmouse olayı gerçekleşti')"> onMouseOver</a>
+
+
+
+<hr>
+<br><br><br>
+
+
+<h3> onFocus Olayı</h3>
+
+
+
+<p>
+Onfocus olayı ekrandaki bir elementin içine tıklannca gerçekleşir
+
+</p>
+
+
+
+<input type="text" name="focus" id="focus" value="buraya tıkla" onfocus="this.value='Fokus işlemi gerçekleşti'">
+
+    
+<br><br><hr><br><br>
+
+<h3>onBlur Olayı</h3>
+
+<p>
+
+onblur olayı ekrandaki bir elementin içinden ayrılınca gerçekleşir
+
+</p>
+
+
+<input type="text" name="focus" id="focus" value="buraya tıkla" onfocus=" this.value='Fokus işlemi gerçekleşti'"  onblur="this.value='güle güle sevgi kelebeği'">
+
+
+
+<h3> OnChange Olayı </h3>
+
+<p>
+bir elementte değişim gerçekleştiğinde tetiklenir mesela bir select listden bir seçenek seçtiğimizde
+
+</p>
+
+
+
+<form>
+
+<select name ="list" id="list" onchange="location=sec(this)">
+
+    <option value="#">bir arama motoru seçin  </option>
+    <option value="https://www.google.com/?client=safari&channel=mac_bm.tr">  google </option>
+    <option value="https://www.google.com/?client=safari&channel=mac_bm.tr">  yandex </option>
+    
+    <option value="https://www.google.com/?client=safari&channel=mac_bm.tr">  yahoo </option>
+    
+
+
+</select>
+
+
+
+</form>
+
+
+<script>
+
+
+function sec(params) 
+
+{   // sec isimli fonksiyona params yani parametre olarak seçilen optşon gelecek
+
+    return params.options[params.selectedIndex].value
+// buraya gelen option içindeki valur yani değeri döndürdük
+
+    
+}
+
+
+
+</script>
+
+<br><br><hr><br><br>
+
+<h3> onSubmit Olayı</h3>
+
+
+<p>
+
+OnSubmit olayı bir form sunucuya gönderilmek üzere tetiklendiğinde çalışır
+
+</p>
+
+<form name="form1">
+
+<b>TC No: </b>
+<input type="text" name="tcnumarasi" id="tcno">
+<input type="submit" value="Kaydet" >
+
+
+
+</form>
+
+<script>
+function veriKontrol() {
+
+    var KarakterSayisi=document.form1.tcnumarasi.value.length;
+
+    if (KarakterSayisi==11) {
+
+        alert('kayıt başarıllı');
+        
+    }
+
+    else alert ('kayıt başarısız ' + KarakterSayisi + " karakter girdiniz. Tc.no 11 karakter olamalıdır !  " );
+    
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
